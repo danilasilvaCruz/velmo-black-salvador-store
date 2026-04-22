@@ -4,9 +4,9 @@
 export const PRODUCTS = [
   {
     id: 1,
-    name: "Creatina Gummes",
-    description: "Creatina monohidratada em formato gummy. Aumenta a síntese proteica, neuroproteção e foco mental.",
-    price: "R$ 59,90",
+    name: "Velmo Black Capsulas",
+    description: "Velmo Black 1 Mês - 50% de Desconto.",
+    price: "12x de R$ 13,29 Ou R$ 98,50 à vista",
     image: "/placeholder-creatina.jpg",
     paymentLink: "https://pay.hest.com.br/e5dbc6d5-79de-48d5-a823-366677ae411f",
     benefits: [
