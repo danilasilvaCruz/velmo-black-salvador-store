@@ -7,7 +7,7 @@ export const PRODUCTS = [
     name: "Velmo Black 60 Capsulas 30g",
     description: "Velmo Black 1 Mês - 50% de Desconto.",
     price: "12x de R$ 13,29 Ou R$ 98,50 à vista",
-    image: "/blackcapsula.jpg",
+    image: "/blackcapsula.jpeg",
     paymentLink: "https://pay.hest.com.br/e5dbc6d5-79de-48d5-a823-366677ae411f",
     benefits: [
       "Velmo Black é o suplemento ideal para quem busca controlar a fome, ter mais energia e acelerar resultados no emagrecimento com praticidade no dia a dia."
