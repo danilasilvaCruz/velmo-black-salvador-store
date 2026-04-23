@@ -37,6 +37,11 @@ export default function Footer() {
                   Resultados
                 </Link>
               </li>
+              <li>
+                <Link href="/depoimentos" className="hover:text-accent transition-colors">
+                  Depoimentos
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -60,9 +65,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link href="/faq" className="hover:text-accent transition-colors">
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

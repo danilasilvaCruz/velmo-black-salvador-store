@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import Beneficios from "./pages/Beneficios";
 import ComoUsar from "./pages/ComoUsar";
 import Resultados from "./pages/Resultados";
+import Depoimentos from "./pages/Depoimentos";
+import FAQ from "./pages/FAQ";
 
 
 function Router() {
@@ -21,6 +23,8 @@ function Router() {
         <Route path="/beneficios" component={Beneficios} />
         <Route path="/como-usar" component={ComoUsar} />
         <Route path="/resultados" component={Resultados} />
+        <Route path="/depoimentos" component={Depoimentos} />
+        <Route path="/faq" component={FAQ} />
         <Route path="/404" component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />

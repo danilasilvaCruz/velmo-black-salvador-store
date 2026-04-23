@@ -70,11 +70,19 @@ export default function Home() {
             {PRODUCTS.map((product) => (
               <div key={product.id} className="bg-card rounded-lg overflow-hidden border border-border hover:border-accent/50 transition-all group">
                 {/* Product Image */}
-                <div className="bg-gradient-to-br from-primary/5 to-accent/5 aspect-square flex items-center justify-center border-b border-border group-hover:from-primary/10 group-hover:to-accent/10 transition-all">
-                  <div className="text-center">
-                    <div className="text-5xl mb-2">💊</div>
-                    <p className="text-sm text-muted-foreground">{product.name}</p>
-                  </div>
+                <div className="bg-gradient-to-br from-primary/5 to-accent/5 aspect-square flex items-center justify-center border-b border-border group-hover:from-primary/10 group-hover:to-accent/10 transition-all overflow-hidden">
+                  {product.image && !product.image.includes('placeholder') ? (
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="text-center">
+                      <div className="text-5xl mb-2">💊</div>
+                      <p className="text-sm text-muted-foreground">{product.name}</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Product Info */}
