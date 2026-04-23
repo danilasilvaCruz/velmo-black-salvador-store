@@ -29,12 +29,13 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right - Placeholder for Hero Image */}
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg aspect-square flex items-center justify-center border border-border">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🧪</div>
-                <p className="text-muted-foreground">Imagem do Produto Principal</p>
-              </div>
+            {/* Right - Hero Image */}
+            <div className="rounded-lg aspect-square flex items-center justify-center border border-border overflow-hidden">
+              <img
+                src="/manus-storage/Gemini_Generated_Image_q529o9q529o9q529_b6e53140.png"
+                alt="Velmo Black Chá - Produto Principal"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
