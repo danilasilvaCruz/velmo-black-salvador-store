@@ -1,9 +1,27 @@
 import { PRODUCTS, BENEFITS } from "@/lib/products";
 import { Link } from "wouter";
+import Quiz from "@/components/Quiz";
+import { useState } from "react";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Quiz Section - PRIMEIRO */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container">
+          <div className="text-center mb-12">
+            <div className="inline-block bg-accent/10 text-accent px-4 py-2 rounded-full mb-4">
+              <span className="text-xs font-semibold uppercase tracking-widest">🎯 Quiz Exclusivo</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Descubra Qual Produto é Ideal Para Você</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Responda 5 perguntas rápidas e receba uma recomendação personalizada com desconto exclusivo.
+            </p>
+          </div>
+          <Quiz />
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container">
