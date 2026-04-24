@@ -348,11 +348,11 @@ export default function Home() {
             Deslize para explorar todos os {PRODUCTS.length} produtos disponíveis
           </p>
 
-          <div className="bg-black border border-border rounded-lg p-4 md:p-8">
-            <div className="flex flex-col gap-6">
+          <div className="bg-black border border-border rounded-lg p-4 md:p-6">
+            <div className="flex flex-col gap-3">
               {/* Informações */}
               <div>
-                <div className="flex items-center justify-between mb-3 md:mb-4 flex-wrap gap-2">
+                <div className="flex items-center justify-between mb-2 md:mb-3 flex-wrap gap-2">
                   <span className="text-xs md:text-sm text-[#00D948] font-bold">
                     Produto {currentProductIndex + 1} de {PRODUCTS.length}
                   </span>
@@ -363,17 +363,17 @@ export default function Home() {
                   )}
                 </div>
 
-                <h3 className="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-white">{currentProduct.name}</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-3 text-white">{currentProduct.name}</h3>
 
                 {/* Imagem abaixo do título */}
-                <div className="flex justify-center mb-6">
-                  <div className="w-full max-w-xs h-48 md:h-64 bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg flex items-center justify-center overflow-hidden border border-[#00D948]/20">
-                    <div className="text-4xl md:text-6xl">💊</div>
+                <div className="flex justify-center mb-3">
+                  <div className="w-full max-w-xs h-40 md:h-48 bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg flex items-center justify-center overflow-hidden border border-[#00D948]/20">
+                    <div className="text-4xl md:text-5xl">💊</div>
                   </div>
                 </div>
 
                 {/* Saiba Mais com Descrição e Benefícios */}
-                <div className="mb-6">
+                <div className="mb-3">
                   <button
                     onClick={() => setExpandedBenefits(expandedBenefits === currentProductIndex ? null : currentProductIndex)}
                     className="text-[#00D948] font-bold text-xs md:text-sm hover:underline transition-colors flex items-center gap-2"
@@ -382,12 +382,12 @@ export default function Home() {
                   </button>
                   
                   {expandedBenefits === currentProductIndex && (
-                    <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-border">
-                      <p className="text-xs md:text-sm text-gray-300 mb-3 font-semibold">Descrição:</p>
-                      <p className="text-xs md:text-sm text-gray-200 mb-4">{currentProduct.description}</p>
+                    <div className="mt-2 md:mt-3 pt-2 md:pt-3 border-t border-border">
+                      <p className="text-xs md:text-sm text-gray-300 mb-2 font-semibold">Descrição:</p>
+                      <p className="text-xs md:text-sm text-gray-200 mb-3">{currentProduct.description}</p>
                       
-                      <p className="text-xs md:text-sm text-gray-300 mb-2 font-semibold">Todos os Benefícios:</p>
-                      <ul className="space-y-1 md:space-y-2">
+                      <p className="text-xs md:text-sm text-gray-300 mb-1 font-semibold">Todos os Benefícios:</p>
+                      <ul className="space-y-1">
                         {currentProduct.benefits.map((benefit, idx) => (
                           <li key={idx} className="text-xs md:text-sm text-gray-200 flex items-start gap-2">
                             <span className="text-[#00D948] mt-0.5 flex-shrink-0">✓</span>
@@ -401,22 +401,22 @@ export default function Home() {
               </div>
 
               {/* Preço e Botão */}
-              <div>
-                <div className="bg-[#00D948]/10 border border-[#00D948] rounded-lg p-2 md:p-3 mb-3 md:mb-4">
-                  <p className="text-xs text-gray-300 mb-0.5 font-semibold">Preço</p>
-                  <p className="text-xs md:text-sm font-bold text-[#00D948] line-clamp-1">{currentProduct.price}</p>
+              <div className="mt-1">
+                <div className="bg-[#00D948]/15 border-2 border-[#00D948] rounded-lg p-3 md:p-4 mb-2">
+                  <p className="text-xs text-gray-400 mb-1">Preço</p>
+                  <p className="text-xl md:text-2xl font-bold text-[#00D948]">{currentProduct.price}</p>
                 </div>
 
                 <a
                   href={currentProduct.paymentLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-[#00D948] text-black font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg hover:bg-[#00d948]/90 transition-all text-center mb-2 md:mb-3 text-xs md:text-base"
+                  className="block w-full bg-[#00D948] text-black font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg hover:bg-[#00d948]/90 transition-all text-center mb-2 text-xs md:text-base"
                 >
                   COMPRAR AGORA
                 </a>
 
-                <p className="text-xs text-gray-300 text-center">
+                <p className="text-xs text-gray-400 text-center">
                   ✓ Garantia de 90 dias ou seu dinheiro de volta
                 </p>
               </div>
@@ -517,18 +517,17 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Título */}
-                <h3 className="text-base md:text-lg font-bold mb-1 text-white">{kit.duration}</h3>
-                <p className="text-xs text-gray-400 mb-2">{kit.quantity}</p>
+                {/* Título e Quantidade em uma linha */}
+                <h3 className="text-base md:text-lg font-bold mb-3 text-white">{kit.duration} - {kit.quantity}</h3>
 
-                {/* Preço */}
-                <div className="mb-2">
-                  <p className="text-xs text-gray-500 line-through">{kit.originalPrice}</p>
-                  <p className="text-lg md:text-xl font-bold text-[#00D948]">{kit.price}</p>
+                {/* Preço com destaque */}
+                <div className="mb-3 bg-[#00D948]/10 border border-[#00D948]/30 rounded-lg p-2">
+                  <p className="text-xs text-gray-400 line-through mb-1">De {kit.originalPrice}</p>
+                  <p className="text-lg md:text-xl font-bold text-[#00D948]">por {kit.price}</p>
                 </div>
 
-                {/* Descritivo em máximo 2 linhas */}
-                <p className="text-xs text-[#00D948] font-bold mb-3 line-clamp-2">Economize {kit.discount}</p>
+                {/* Economize */}
+                <p className="text-xs text-[#00D948] font-bold mb-3">Economize {kit.discount}</p>
 
                 {/* Botão */}
                 <a
