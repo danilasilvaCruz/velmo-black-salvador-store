@@ -7,6 +7,8 @@ import Quiz from "@/components/Quiz";
 export default function Home() {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [currentIngredientIndex, setCurrentIngredientIndex] = useState(0);
+  const [expandedBenefits, setExpandedBenefits] = useState<number | null>(null);
   const [showVideo, setShowVideo] = useState(false);
 
   const nextProduct = () => {
@@ -60,6 +62,47 @@ export default function Home() {
   };
 
   const currentTestimonial = testimonials[currentTestimonialIndex];
+
+  const ingredients = [
+    {
+      name: "Morosil",
+      benefit: "Controla o apetite e melhora o intestino",
+      color: "bg-red-500/20 border-red-500",
+      icon: "🔴",
+    },
+    {
+      name: "Psyllium",
+      benefit: "Aumenta saciedade e limpa o intestino",
+      color: "bg-blue-500/20 border-blue-500",
+      icon: "💙",
+    },
+    {
+      name: "Inulina",
+      benefit: "Prebiótico que alimenta bactérias boas",
+      color: "bg-green-500/20 border-green-500",
+      icon: "🌿",
+    },
+    {
+      name: "Picolinato de Cromo",
+      benefit: "Reduz desejo por doces e regula glicose",
+      color: "bg-yellow-500/20 border-yellow-500",
+      icon: "⚡",
+    },
+  ];
+
+  const nextIngredient = () => {
+    setCurrentIngredientIndex((prev) => (prev + 1) % ingredients.length);
+  };
+
+  const prevIngredient = () => {
+    setCurrentIngredientIndex((prev) => (prev - 1 + ingredients.length) % ingredients.length);
+  };
+
+  const goToIngredient = (index: number) => {
+    setCurrentIngredientIndex(index);
+  };
+
+  const currentIngredient = ingredients[currentIngredientIndex];
 
   return (
     <div className="min-h-screen bg-background">
@@ -219,53 +262,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEÇÃO DE INGREDIENTES COM IMAGENS */}
+      {/* SEÇÃO DE INGREDIENTES - CAROUSEL HORIZONTAL */}
       <section className="py-16 px-4 bg-card/50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Ingredientes Naturais</h2>
-          <p className="text-center text-gray-400 mb-12">
+          <p className="text-center text-gray-300 mb-12">
             Cada ingrediente trabalha em harmonia para resultados reais
           </p>
 
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Morosil",
-                benefit: "Controla o apetite e melhora o intestino",
-                color: "bg-red-500/20 border-red-500",
-                icon: "🔴",
-              },
-              {
-                name: "Psyllium",
-                benefit: "Aumenta saciedade e limpa o intestino",
-                color: "bg-blue-500/20 border-blue-500",
-                icon: "💙",
-              },
-              {
-                name: "Inulina",
-                benefit: "Prebiótico que alimenta bactérias boas",
-                color: "bg-green-500/20 border-green-500",
-                icon: "🌿",
-              },
-              {
-                name: "Picolinato de Cromo",
-                benefit: "Reduz desejo por doces e regula glicose",
-                color: "bg-yellow-500/20 border-yellow-500",
-                icon: "⚡",
-              },
-            ].map((ingredient, idx) => (
-              <div
-                key={idx}
-                className={`border rounded-lg p-6 ${ingredient.color} text-center hover:shadow-lg transition-all`}
-              >
-                <div className="text-4xl mb-3">{ingredient.icon}</div>
-                <h3 className="font-bold text-lg mb-2 text-white">{ingredient.name}</h3>
-                <p className="text-sm text-gray-300 mb-4">{ingredient.benefit}</p>
-                <button className="text-[#00D948] font-bold text-sm hover:underline">
-                  ▶ Saiba Mais
-                </button>
+          <div className="bg-card border border-border rounded-lg p-8">
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              {/* Ícone e Nome */}
+              <div className="flex-shrink-0 text-center">
+                <div className="text-6xl mb-4">{currentIngredient.icon}</div>
+                <h3 className="text-2xl font-bold text-white">{currentIngredient.name}</h3>
               </div>
-            ))}
+
+              {/* Benefício */}
+              <div className="flex-1">
+                <p className="text-lg text-gray-300 mb-6">{currentIngredient.benefit}</p>
+                <a
+                  href="/resultados"
+                  className="inline-block text-[#00D948] font-bold hover:underline transition-colors"
+                >
+                  📖 Saiba Mais sobre este Ingrediente →
+                </a>
+              </div>
+            </div>
+
+            {/* Navegação do carousel */}
+            <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
+              <button
+                onClick={prevIngredient}
+                className="p-2 hover:bg-background rounded-lg transition-all"
+                aria-label="Ingrediente anterior"
+              >
+                <ChevronLeft className="w-6 h-6 text-[#00D948]" />
+              </button>
+
+              <div className="flex gap-2">
+                {ingredients.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => goToIngredient(idx)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      idx === currentIngredientIndex ? "bg-[#00D948] w-8" : "bg-gray-600"
+                    }`}
+                    aria-label={`Ir para ingrediente ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextIngredient}
+                className="p-2 hover:bg-background rounded-lg transition-all"
+                aria-label="Próximo ingrediente"
+              >
+                <ChevronRight className="w-6 h-6 text-[#00D948]" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -274,7 +329,7 @@ export default function Home() {
       <section className="py-16 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Escolha Seu Produto</h2>
-          <p className="text-center text-gray-400 mb-12">
+          <p className="text-center text-gray-300 mb-12">
             Deslize para explorar todos os {PRODUCTS.length} produtos disponíveis
           </p>
 
@@ -301,23 +356,34 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-2xl font-bold mb-3 text-white">{currentProduct.name}</h3>
-                <p className="text-gray-300 mb-6">{currentProduct.description}</p>
+                <p className="text-gray-200 mb-6">{currentProduct.description}</p>
 
                 <div className="mb-6">
-                  <p className="text-sm text-gray-400 mb-2">Principais Benefícios:</p>
-                  <ul className="space-y-2">
-                    {currentProduct.benefits.slice(0, 3).map((benefit, idx) => (
-                      <li key={idx} className="text-sm text-gray-300 flex items-start gap-2">
-                        <span className="text-[#00D948] mt-1">✓</span>
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <button
+                    onClick={() => setExpandedBenefits(expandedBenefits === currentProductIndex ? null : currentProductIndex)}
+                    className="text-[#00D948] font-bold text-sm hover:underline transition-colors flex items-center gap-2"
+                  >
+                    {expandedBenefits === currentProductIndex ? "▼" : "▶"} Saiba Mais
+                  </button>
+                  
+                  {expandedBenefits === currentProductIndex && (
+                    <div className="mt-4 pt-4 border-t border-border">
+                      <p className="text-sm text-gray-300 mb-3 font-semibold">Todos os Benefícios:</p>
+                      <ul className="space-y-2">
+                        {currentProduct.benefits.map((benefit, idx) => (
+                          <li key={idx} className="text-sm text-gray-200 flex items-start gap-2">
+                            <span className="text-[#00D948] mt-1">✓</span>
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
 
                 <div className="bg-[#00D948]/10 border border-[#00D948] rounded-lg p-4 mb-6">
-                  <p className="text-sm text-gray-400 mb-1">Preço</p>
-                  <p className="text-2xl font-bold text-white">{currentProduct.price}</p>
+                  <p className="text-sm text-gray-300 mb-1 font-semibold">Preço</p>
+                  <p className="text-2xl font-bold text-[#00D948]">{currentProduct.price}</p>
                 </div>
 
                 <a
@@ -329,7 +395,7 @@ export default function Home() {
                   COMPRAR AGORA
                 </a>
 
-                <p className="text-xs text-gray-400 text-center">
+                <p className="text-xs text-gray-300 text-center">
                   ✓ Garantia de 90 dias ou seu dinheiro de volta
                 </p>
               </div>

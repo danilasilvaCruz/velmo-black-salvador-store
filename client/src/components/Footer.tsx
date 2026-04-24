@@ -98,7 +98,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/70">
-            <p>© 2024 VELMO BLACK SALVADOR. CLINICAL-LUXE WELLNESS</p>
+            <p>© 2024 VELMO BLACK SALVADOR</p>
             <p>Desenvolvido com precisão científica e excelência.</p>
           </div>
         </div>
