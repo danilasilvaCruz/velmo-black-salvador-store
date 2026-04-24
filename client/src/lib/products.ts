@@ -20,12 +20,12 @@ export const PRODUCTS = [
   {
     id: 2,
     name: "Velmo Black Drink Com 150g rende ate 30 porcoes.",
-    description: "Velmo Black Drink - Morango 1 Mes - 50% de Desconto - nao e remedio – e natural e age como aliado da dieta",
+    description: "Velmo Black Drink - Morango 1 Mes - 50% de Desconto - nao e remedio - e natural e age como aliado da dieta",
     price: "12x de R$ 13,95 Ou R$ 104,95 a vista",
     image: "/manus-storage/vemlodrinkmorango_47307fca.jpeg",
     paymentLink: "https://pay.hest.com.br/7d11924f-5a3f-49e3-b23a-5214cc1a0590",
     benefits: [
-      "Mais disposicao, menos fome e sem inchaço? Velmo Black Drink – tudo em um unico cha. Resultado real, sem milagre. Comece hoje!",
+      "Mais disposicao, menos fome e sem inchaco? Velmo Black Drink - tudo em um unico cha. Resultado real, sem milagre. Comece hoje!",
       "O psyllium + inulina limpam o intestino de verdade.",
       "A curcuma e um poderoso anti-inflamatorio natural.",
       "O hibisco age como um diuretico natural.",
@@ -40,7 +40,7 @@ export const PRODUCTS = [
     image: "/manus-storage/20260415193820393_2b0bc204.jpeg",
     paymentLink: "https://pay.hest.com.br/8d4f42a1-71b7-4109-addf-c7b89102626b",
     benefits: [
-      "Menos fome + menos inchaço + mais calorias queimadas, Velmo Black Drink – emagrecimento mais consistente. Comece hoje!",
+      "Menos fome + menos inchaco + mais calorias queimadas, Velmo Black Drink - emagrecimento mais consistente. Comece hoje!",
       "O psyllium + inulina regula o intestino = barriga chapada e mais saude.",
       "A curcuma reduz a inflamacao, seu corpo responde muito melhor a dieta.",
       "O hibisco eliminando o excesso de liquidos.",
@@ -49,41 +49,43 @@ export const PRODUCTS = [
   },
   {
     id: 4,
-    name: "Sleep Matrix",
-    description: "Formula avancada para sono restaurador e recuperacao celular.",
-    price: "R$ 72,90",
-    image: "/placeholder-sleep.jpg",
+    name: "COMBO - 1 Velmo Black Morango + 1 Velmo Black Tangerina",
+    description: "Combo Velmo Black Drink - Protocolo de 60 dias com os dois sabores (Morango + Tangerina) para recuperacao e emagrecimento.",
+    price: "12x de R$ 25,27 Ou R$ 245,80 a vista",
+    image: "/manus-storage/imagem4_2984d88c.png",
     paymentLink: "https://pay.hest.com.br/23b092bb-206d-4ef4-b689-b6c66d3b38e7",
     benefits: [
-      "Sono de qualidade",
-      "Recuperacao muscular",
-      "Reparacao celular"
+      "Protocolo de 60 dias com o cha VELMO BLACK DRINK. Na primeira semana, seu intestino vai se adaptar - pode sentir alguns gases, e normal. Na quarta semana, a saciedade ja estara no controle. No segundo mes, os resultados aparecem: menos gordura, menos inchaco, mais leveza.",
+      "Um estudo de 2024 com a mesma combinacao de fibras comprovou: -13% de gordura corporal.",
+      "Seu corpo so precisa de tempo e consistencia. 60 dias. Dois potes. Uma nova versao de voce."
     ]
   },
   {
     id: 5,
-    name: "Metabolismo Black",
+    name: "COMBO - 1 Velmo Black Morango + 1 Velmo Black Caps",
     description: "Suplemento especializado para otimizar o metabolismo e queima de gordura.",
-    price: "R$ 89,90",
-    image: "/placeholder-metabolismo.jpg",
+    price: "12x de R$ 25,27 Ou R$ 245,80 a vista",
+    image: "/manus-storage/imagem5_36f75920.png",
     paymentLink: "https://pay.hest.com.br/cc3ccd7d-2f65-4f60-9b28-6f0d09a2faf7",
     benefits: [
       "Aceleracao metabolica",
       "Queima de gordura",
-      "Energia sustentada"
+      "Energia sustentada",
+      "30 dias combinando as capsulas VELMO BLACK com o cha VELMO BLACK DRINK. Resultado nao e sorte - e estrategia."
     ]
   },
   {
     id: 6,
-    name: "Performance Elite",
+    name: "COMBO - 1 Velmo Black Tangerina + 1 Velmo Black Caps",
     description: "Formula premium para atletas e praticantes de atividade fisica intensiva.",
-    price: "R$ 99,90",
-    image: "/placeholder-performance.jpg",
+    price: "12x de R$ 25,27 Ou R$ 245,80 a vista",
+    image: "/manus-storage/imagem6_0815f76d.png",
     paymentLink: "https://pay.hest.com.br/e7c7b7d4-e27c-4e9d-a7b6-4dff4611db24",
     benefits: [
       "Desempenho maximo",
       "Resistencia prolongada",
-      "Recuperacao acelerada"
+      "Recuperacao acelerada",
+      "30 dias combinando as capsulas VELMO BLACK com o cha VELMO BLACK DRINK. Resultado nao e sorte - e estrategia."
     ]
   }
 ];
