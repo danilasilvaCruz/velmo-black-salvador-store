@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { PRODUCTS } from "@/lib/products";
 import { Button } from "@/components/ui/button";
-import Quiz from "@/components/Quiz";
+// import Quiz from "@/components/Quiz"; // Descomente quando quiser usar o Quiz novamente
 
 export default function Home() {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
@@ -156,7 +156,7 @@ export default function Home() {
                 ⏰ ESTOQUE LIMITADO
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-white">
                 Emagrecimento Sem Milagres. <span className="text-[#00D948]">Com Ciência.</span>
               </h1>
 
@@ -204,9 +204,9 @@ export default function Home() {
       {/* TESTIMONIALS CAROUSEL */}
       <section className="py-12 md:py-16 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">Resultados Reais de Nossos Clientes</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-white">Resultados Reais de Nossos Clientes</h2>
 
-          <div className="bg-card border border-border rounded-lg p-6 md:p-8">
+          <div className="bg-black border border-border rounded-lg p-6 md:p-8">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               {/* Avatar */}
               <div className="flex-shrink-0">
@@ -281,12 +281,12 @@ export default function Home() {
       {/* SEÇÃO DE INGREDIENTES - CAROUSEL HORIZONTAL */}
       <section className="py-12 md:py-16 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">Ingredientes Naturais</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Ingredientes Naturais</h2>
           <p className="text-center text-gray-200 mb-12 text-sm md:text-base">
             Cada ingrediente trabalha em harmonia para resultados reais
           </p>
 
-          <div className="bg-card border border-border rounded-lg p-4 md:p-8">
+          <div className="bg-black border border-border rounded-lg p-4 md:p-8">
             <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
               {/* Ícone e Nome */}
               <div className="flex-shrink-0">
@@ -343,80 +343,81 @@ export default function Home() {
       {/* SEÇÃO DE CARROSSEL DE PRODUTOS */}
       <section className="py-12 md:py-16 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">Escolha Seu Produto</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Escolha Seu Produto</h2>
           <p className="text-center text-gray-200 mb-8 md:mb-12 text-sm md:text-base">
             Deslize para explorar todos os {PRODUCTS.length} produtos disponíveis
           </p>
 
-          <div className="bg-card border border-border rounded-lg p-4 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-start">
-              {/* Imagem */}
-              <div className="flex justify-center order-2 md:order-1">
-                <div className="w-full max-w-xs h-48 md:h-80 bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg flex items-center justify-center overflow-hidden border border-[#00D948]/20">
-                  <div className="text-4xl md:text-6xl">💊</div>
+          <div className="bg-black border border-border rounded-lg p-4 md:p-8">
+            <div className="flex flex-col gap-6">
+              {/* Informações */}
+              <div>
+                <div className="flex items-center justify-between mb-3 md:mb-4 flex-wrap gap-2">
+                  <span className="text-xs md:text-sm text-[#00D948] font-bold">
+                    Produto {currentProductIndex + 1} de {PRODUCTS.length}
+                  </span>
+                  {currentProductIndex === 0 && (
+                    <span className="bg-red-500 text-white px-2 md:px-3 py-1 rounded-full text-xs font-bold">
+                      🔥 BEST SELLER
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-white">{currentProduct.name}</h3>
+
+                {/* Imagem abaixo do título */}
+                <div className="flex justify-center mb-6">
+                  <div className="w-full max-w-xs h-48 md:h-64 bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg flex items-center justify-center overflow-hidden border border-[#00D948]/20">
+                    <div className="text-4xl md:text-6xl">💊</div>
+                  </div>
+                </div>
+
+                {/* Descrição e Saiba Mais */}
+                <div className="mb-6">
+                  <p className="text-xs md:text-sm text-gray-300 mb-4">{currentProduct.description}</p>
+                  
+                  <button
+                    onClick={() => setExpandedBenefits(expandedBenefits === currentProductIndex ? null : currentProductIndex)}
+                    className="text-[#00D948] font-bold text-xs md:text-sm hover:underline transition-colors flex items-center gap-2"
+                  >
+                    {expandedBenefits === currentProductIndex ? "▼" : "▶"} Saiba Mais
+                  </button>
+                  
+                  {expandedBenefits === currentProductIndex && (
+                    <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-border">
+                      <p className="text-xs md:text-sm text-gray-300 mb-2 md:mb-3 font-semibold">Todos os Benefícios:</p>
+                      <ul className="space-y-1 md:space-y-2">
+                        {currentProduct.benefits.map((benefit, idx) => (
+                          <li key={idx} className="text-xs md:text-sm text-gray-200 flex items-start gap-2">
+                            <span className="text-[#00D948] mt-0.5 flex-shrink-0">✓</span>
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
 
-              {/* Informações */}
-              <div className="order-1 md:order-2 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-3 md:mb-4 flex-wrap gap-2">
-                    <span className="text-xs md:text-sm text-[#00D948] font-bold">
-                      Produto {currentProductIndex + 1} de {PRODUCTS.length}
-                    </span>
-                    {currentProductIndex === 0 && (
-                      <span className="bg-red-500 text-white px-2 md:px-3 py-1 rounded-full text-xs font-bold">
-                        🔥 BEST SELLER
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="text-lg md:text-2xl font-bold mb-2 md:mb-3 text-white">{currentProduct.name}</h3>
-                  <p className="text-xs md:text-sm text-gray-200 mb-4 md:mb-6 line-clamp-2 md:line-clamp-none">{currentProduct.description}</p>
-
-                  <div className="mb-4 md:mb-6">
-                    <button
-                      onClick={() => setExpandedBenefits(expandedBenefits === currentProductIndex ? null : currentProductIndex)}
-                      className="text-[#00D948] font-bold text-xs md:text-sm hover:underline transition-colors flex items-center gap-2"
-                    >
-                      {expandedBenefits === currentProductIndex ? "▼" : "▶"} Saiba Mais
-                    </button>
-                    
-                    {expandedBenefits === currentProductIndex && (
-                      <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-border">
-                        <p className="text-xs md:text-sm text-gray-300 mb-2 md:mb-3 font-semibold">Todos os Benefícios:</p>
-                        <ul className="space-y-1 md:space-y-2">
-                          {currentProduct.benefits.map((benefit, idx) => (
-                            <li key={idx} className="text-xs md:text-sm text-gray-200 flex items-start gap-2">
-                              <span className="text-[#00D948] mt-0.5 flex-shrink-0">✓</span>
-                              <span>{benefit}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+              {/* Preço e Botão */}
+              <div>
+                <div className="bg-[#00D948]/10 border border-[#00D948] rounded-lg p-3 md:p-4 mb-3 md:mb-4">
+                  <p className="text-xs md:text-sm text-gray-300 mb-1 font-semibold">Preço</p>
+                  <p className="text-base md:text-lg font-bold text-[#00D948]">{currentProduct.price}</p>
                 </div>
 
-                <div>
-                  <div className="bg-[#00D948]/10 border border-[#00D948] rounded-lg p-3 md:p-4 mb-3 md:mb-4">
-                    <p className="text-xs md:text-sm text-gray-300 mb-1 font-semibold">Preço</p>
-                    <p className="text-lg md:text-2xl font-bold text-[#00D948]">{currentProduct.price}</p>
-                  </div>
+                <a
+                  href={currentProduct.paymentLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-[#00D948] text-black font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg hover:bg-[#00d948]/90 transition-all text-center mb-2 md:mb-3 text-xs md:text-base"
+                >
+                  COMPRAR AGORA
+                </a>
 
-                  <a
-                    href={currentProduct.paymentLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-[#00D948] text-black font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg hover:bg-[#00d948]/90 transition-all text-center mb-2 md:mb-3 text-xs md:text-base"
-                  >
-                    COMPRAR AGORA
-                  </a>
-
-                  <p className="text-xs text-gray-300 text-center">
-                    ✓ Garantia de 90 dias ou seu dinheiro de volta
-                  </p>
-                </div>
+                <p className="text-xs text-gray-300 text-center">
+                  ✓ Garantia de 90 dias ou seu dinheiro de volta
+                </p>
               </div>
             </div>
 
@@ -458,7 +459,7 @@ export default function Home() {
       {/* SEÇÃO DE KITS */}
       <section id="kits" className="py-12 md:py-16 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">Escolha Seu Kit Ideal</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Escolha Seu Kit Ideal</h2>
           <p className="text-center text-gray-200 mb-8 md:mb-12 text-sm md:text-base">
             Recomendamos 3 a 5 meses para melhores resultados
           </p>
@@ -495,37 +496,48 @@ export default function Home() {
             ].map((kit, idx) => (
               <div
                 key={idx}
-                className={`rounded-lg p-4 md:p-6 border-2 transition-all flex flex-col overflow-hidden ${
+                className={`rounded-lg p-4 md:p-6 border-2 transition-all overflow-hidden ${
                   kit.badge
                     ? "border-[#00D948] bg-[#00D948]/5"
                     : "border-border bg-card hover:border-[#00D948]/30"
                 }`}
               >
-                {/* Image Section */}
-                <div className="w-full h-32 md:h-40 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center mb-4 border border-[#00D948]/20">
-                  <div className="text-4xl md:text-5xl">{kit.icon}</div>
-                </div>
+                {/* Grid 2x2: Info esquerda, Imagem direita, Botão na linha 2 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+                  {/* Coluna 1: Informações */}
+                  <div className="flex flex-col justify-between">
+                    {kit.badge && (
+                      <div className="bg-[#00D948] text-black px-3 py-1 rounded-full text-xs font-bold mb-3 w-fit">
+                        {kit.badge}
+                      </div>
+                    )}
 
-                {kit.badge && (
-                  <div className="bg-[#00D948] text-black px-3 py-1 rounded-full text-xs font-bold mb-3 w-fit">
-                    {kit.badge}
+                    <div>
+                      <h3 className="text-lg md:text-xl font-bold mb-1 text-white">{kit.duration}</h3>
+                      <p className="text-xs md:text-sm text-gray-400 mb-4">{kit.quantity}</p>
+
+                      <div className="mb-4 md:mb-6">
+                        <p className="text-xs text-gray-500 line-through">{kit.originalPrice}</p>
+                        <p className="text-2xl md:text-3xl font-bold text-[#00D948]">{kit.price}</p>
+                        <p className="text-xs text-[#00D948] font-bold">Economize {kit.discount}</p>
+                      </div>
+                    </div>
                   </div>
-                )}
 
-                <h3 className="text-lg md:text-xl font-bold mb-1 text-white">{kit.duration}</h3>
-                <p className="text-xs md:text-sm text-gray-400 mb-4">{kit.quantity}</p>
-
-                <div className="mb-4 md:mb-6">
-                  <p className="text-xs text-gray-500 line-through">{kit.originalPrice}</p>
-                  <p className="text-2xl md:text-3xl font-bold text-[#00D948]">{kit.price}</p>
-                  <p className="text-xs text-[#00D948] font-bold">Economize {kit.discount}</p>
+                  {/* Coluna 2: Imagem */}
+                  <div className="flex items-center justify-center">
+                    <div className="w-full h-32 md:h-40 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center border border-[#00D948]/20">
+                      <div className="text-4xl md:text-5xl">{kit.icon}</div>
+                    </div>
+                  </div>
                 </div>
 
+                {/* Linha 2: Botão em largura total */}
                 <a
                   href={PRODUCTS[0]?.paymentLink || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-[#00D948] text-black font-bold py-2 md:py-3 px-4 rounded-lg hover:bg-[#00d948]/90 transition-all text-center text-xs md:text-base mt-auto"
+                  className="w-full bg-[#00D948] text-black font-bold py-2 md:py-3 px-4 rounded-lg hover:bg-[#00d948]/90 transition-all text-center text-xs md:text-base mt-4"
                 >
                   COMPRAR AGORA
                 </a>
@@ -538,7 +550,7 @@ export default function Home() {
       {/* ANVISA SECTION */}
       <section className="py-12 md:py-16 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-card border border-border rounded-lg p-6 md:p-8 text-center">
+          <div className="bg-black border border-border rounded-lg p-6 md:p-8 text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">✓ Liberado pela ANVISA</h2>
             <p className="text-sm md:text-base text-gray-300 mb-6">
               Suplemento alimentar regularizado conforme RDC nº 27/2010 da ANVISA. Fórmula desenvolvida em laboratórios certificados com controle de qualidade rigoroso.
@@ -553,14 +565,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* QUIZ SECTION */}
-      <section className="py-12 md:py-16 px-4 bg-black">
+      {/* VIDEO SECTION */}
+      <section className="py-8 md:py-12 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Como É Feito?</h2>
-          <p className="text-center text-gray-300 mb-8 text-sm md:text-base">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Como É Feito?</h2>
+          <p className="text-center text-gray-300 mb-6 text-sm md:text-base">
             Transparência total - Veja como produzimos seu suplemento
           </p>
-          <Quiz />
+          
+          {/* Vídeo Placeholder */}
+          <div className="w-full max-w-4xl mx-auto">
+            <div className="relative w-full bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg overflow-hidden border border-[#00D948]/20 aspect-video flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-6xl mb-4">🎬</div>
+                <p className="text-gray-300 text-sm md:text-base">Vídeo em breve</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
