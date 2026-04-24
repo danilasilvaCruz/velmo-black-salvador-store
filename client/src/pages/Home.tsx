@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { PRODUCTS } from "@/lib/products";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ export default function Home() {
   const [expandedBenefits, setExpandedBenefits] = useState<number | null>(null);
   const [showVideo, setShowVideo] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
+  const quizRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll para carrosséis
   useEffect(() => {
@@ -185,7 +186,10 @@ export default function Home() {
                 >
                   COMPRAR AGORA
                 </a>
-                <button className="border-2 border-[#00D948] text-[#00D948] font-bold py-3 px-6 rounded-lg hover:bg-[#00D948]/10 transition-all text-sm md:text-base">
+                <button 
+                  onClick={() => quizRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  className="border-2 border-[#00D948] text-[#00D948] font-bold py-3 px-6 rounded-lg hover:bg-[#00D948]/10 transition-all text-sm md:text-base"
+                >
                   Fazer Quiz Rápido
                 </button>
               </div>
@@ -299,7 +303,7 @@ export default function Home() {
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-xl md:text-2xl font-bold mb-2 text-white">{currentIngredient.name}</h3>
                 <p className="text-sm md:text-base text-gray-300 mb-4">{currentIngredient.benefit}</p>
-                <a href="/resultados" className="text-[#00D948] font-bold text-sm md:text-base hover:underline">
+                <a href="/beneficios" className="text-[#00D948] font-bold text-sm md:text-base hover:underline">
                   📖 Saiba Mais sobre este Ingrediente →
                 </a>
               </div>
@@ -563,12 +567,23 @@ export default function Home() {
       </section>
 
       {/* QUIZ SECTION */}
-      <section className="py-8 md:py-12 px-4 bg-black">
+      <section ref={quizRef} className="py-8 md:py-12 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Como É Feito?</h2>
           <p className="text-center text-gray-300 mb-6 text-sm md:text-base">
             Transparência total - Veja como produzimos seu suplemento
           </p>
+          
+          {/* Espaço para vídeo */}
+          <div className="mb-8 md:mb-12 flex justify-center">
+            <div className="w-full max-w-2xl aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border-2 border-[#00D948]/30 flex items-center justify-center">
+              <div className="text-center">
+                <Play className="w-16 h-16 text-[#00D948] mx-auto mb-3" />
+                <p className="text-gray-300 text-sm md:text-base">Vídeo de Fabricação</p>
+              </div>
+            </div>
+          </div>
+          
           <Quiz />
         </div>
       </section>
