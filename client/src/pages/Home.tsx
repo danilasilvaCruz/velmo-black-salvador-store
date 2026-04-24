@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { PRODUCTS } from "@/lib/products";
 import { Button } from "@/components/ui/button";
-// import Quiz from "@/components/Quiz"; // Descomente quando quiser usar o Quiz novamente
+import Quiz from "@/components/Quiz";
 
 export default function Home() {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
@@ -372,10 +372,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Descrição e Saiba Mais */}
+                {/* Saiba Mais com Descrição e Benefícios */}
                 <div className="mb-6">
-                  <p className="text-xs md:text-sm text-gray-300 mb-4">{currentProduct.description}</p>
-                  
                   <button
                     onClick={() => setExpandedBenefits(expandedBenefits === currentProductIndex ? null : currentProductIndex)}
                     className="text-[#00D948] font-bold text-xs md:text-sm hover:underline transition-colors flex items-center gap-2"
@@ -385,7 +383,10 @@ export default function Home() {
                   
                   {expandedBenefits === currentProductIndex && (
                     <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-border">
-                      <p className="text-xs md:text-sm text-gray-300 mb-2 md:mb-3 font-semibold">Todos os Benefícios:</p>
+                      <p className="text-xs md:text-sm text-gray-300 mb-3 font-semibold">Descrição:</p>
+                      <p className="text-xs md:text-sm text-gray-200 mb-4">{currentProduct.description}</p>
+                      
+                      <p className="text-xs md:text-sm text-gray-300 mb-2 font-semibold">Todos os Benefícios:</p>
                       <ul className="space-y-1 md:space-y-2">
                         {currentProduct.benefits.map((benefit, idx) => (
                           <li key={idx} className="text-xs md:text-sm text-gray-200 flex items-start gap-2">
@@ -401,9 +402,9 @@ export default function Home() {
 
               {/* Preço e Botão */}
               <div>
-                <div className="bg-[#00D948]/10 border border-[#00D948] rounded-lg p-3 md:p-4 mb-3 md:mb-4">
-                  <p className="text-xs md:text-sm text-gray-300 mb-1 font-semibold">Preço</p>
-                  <p className="text-base md:text-lg font-bold text-[#00D948]">{currentProduct.price}</p>
+                <div className="bg-[#00D948]/10 border border-[#00D948] rounded-lg p-2 md:p-3 mb-3 md:mb-4">
+                  <p className="text-xs text-gray-300 mb-0.5 font-semibold">Preço</p>
+                  <p className="text-xs md:text-sm font-bold text-[#00D948] line-clamp-1">{currentProduct.price}</p>
                 </div>
 
                 <a
@@ -496,48 +497,45 @@ export default function Home() {
             ].map((kit, idx) => (
               <div
                 key={idx}
-                className={`rounded-lg p-4 md:p-6 border-2 transition-all overflow-hidden ${
+                className={`rounded-lg p-4 md:p-5 border-2 transition-all overflow-hidden flex flex-col ${
                   kit.badge
-                    ? "border-[#00D948] bg-[#00D948]/5"
-                    : "border-border bg-card hover:border-[#00D948]/30"
+                    ? "border-[#00D948] bg-black"
+                    : "border-gray-700 bg-black hover:border-[#00D948]/30"
                 }`}
               >
-                {/* Grid 2x2: Info esquerda, Imagem direita, Botão na linha 2 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
-                  {/* Coluna 1: Informações */}
-                  <div className="flex flex-col justify-between">
-                    {kit.badge && (
-                      <div className="bg-[#00D948] text-black px-3 py-1 rounded-full text-xs font-bold mb-3 w-fit">
-                        {kit.badge}
-                      </div>
-                    )}
-
-                    <div>
-                      <h3 className="text-lg md:text-xl font-bold mb-1 text-white">{kit.duration}</h3>
-                      <p className="text-xs md:text-sm text-gray-400 mb-4">{kit.quantity}</p>
-
-                      <div className="mb-4 md:mb-6">
-                        <p className="text-xs text-gray-500 line-through">{kit.originalPrice}</p>
-                        <p className="text-2xl md:text-3xl font-bold text-[#00D948]">{kit.price}</p>
-                        <p className="text-xs text-[#00D948] font-bold">Economize {kit.discount}</p>
-                      </div>
-                    </div>
+                {/* Badge */}
+                {kit.badge && (
+                  <div className="bg-[#00D948] text-black px-2 py-0.5 rounded-full text-xs font-bold mb-2 w-fit">
+                    {kit.badge}
                   </div>
+                )}
 
-                  {/* Coluna 2: Imagem */}
-                  <div className="flex items-center justify-center">
-                    <div className="w-full h-32 md:h-40 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center border border-[#00D948]/20">
-                      <div className="text-4xl md:text-5xl">{kit.icon}</div>
-                    </div>
+                {/* Imagem no topo */}
+                <div className="flex items-center justify-center mb-3 h-24 md:h-28">
+                  <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center border border-[#00D948]/20">
+                    <div className="text-3xl md:text-4xl">{kit.icon}</div>
                   </div>
                 </div>
 
-                {/* Linha 2: Botão em largura total */}
+                {/* Título */}
+                <h3 className="text-base md:text-lg font-bold mb-1 text-white">{kit.duration}</h3>
+                <p className="text-xs text-gray-400 mb-2">{kit.quantity}</p>
+
+                {/* Preço */}
+                <div className="mb-2">
+                  <p className="text-xs text-gray-500 line-through">{kit.originalPrice}</p>
+                  <p className="text-lg md:text-xl font-bold text-[#00D948]">{kit.price}</p>
+                </div>
+
+                {/* Descritivo em máximo 2 linhas */}
+                <p className="text-xs text-[#00D948] font-bold mb-3 line-clamp-2">Economize {kit.discount}</p>
+
+                {/* Botão */}
                 <a
                   href={PRODUCTS[0]?.paymentLink || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-[#00D948] text-black font-bold py-2 md:py-3 px-4 rounded-lg hover:bg-[#00d948]/90 transition-all text-center text-xs md:text-base mt-4"
+                  className="w-full bg-[#00D948] text-black font-bold py-2 px-3 rounded-lg hover:bg-[#00d948]/90 transition-all text-center text-xs md:text-sm mt-auto"
                 >
                   COMPRAR AGORA
                 </a>
@@ -565,30 +563,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* VIDEO SECTION */}
+      {/* QUIZ SECTION */}
       <section className="py-8 md:py-12 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Como É Feito?</h2>
           <p className="text-center text-gray-300 mb-6 text-sm md:text-base">
             Transparência total - Veja como produzimos seu suplemento
           </p>
-          
-          {/* Vídeo Placeholder */}
-          <div className="w-full max-w-4xl mx-auto">
-            <div className="relative w-full bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg overflow-hidden border border-[#00D948]/20 aspect-video flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🎬</div>
-                <p className="text-gray-300 text-sm md:text-base">Vídeo em breve</p>
-              </div>
-            </div>
-          </div>
+          <Quiz />
         </div>
       </section>
 
       {/* FAQ SECTION */}
       <section className="py-12 md:py-16 px-4 bg-black">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Dúvidas Frequentes</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-white">Dúvidas Frequentes</h2>
 
           <div className="space-y-4">
             {[
@@ -615,13 +604,13 @@ export default function Home() {
             ].map((faq, idx) => (
               <details
                 key={idx}
-                className="bg-card border border-border rounded-lg p-4 md:p-6 cursor-pointer hover:border-[#00D948]/30 transition-all"
+                className="bg-black border-2 border-gray-700 rounded-lg p-3 md:p-4 cursor-pointer hover:border-[#00D948] transition-all"
               >
                 <summary className="font-bold text-white text-sm md:text-base flex items-center justify-between">
                   {faq.question}
-                  <span className="text-[#00D948] ml-2">+</span>
+                  <span className="text-[#00D948] ml-2 text-lg">+</span>
                 </summary>
-                <p className="text-gray-300 mt-4 text-xs md:text-sm">{faq.answer}</p>
+                <p className="text-gray-300 mt-3 text-xs md:text-sm">{faq.answer}</p>
               </details>
             ))}
           </div>

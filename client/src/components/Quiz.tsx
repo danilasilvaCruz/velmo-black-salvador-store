@@ -156,54 +156,54 @@ export default function Quiz({ onClose }: QuizProps) {
 
   if (showResult && recommendation) {
     return (
-      <div className="w-full bg-card rounded-lg p-8 md:p-12 border border-border">
+      <div className="w-full bg-black rounded-lg p-6 md:p-8 border border-border">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-block bg-accent/20 text-accent px-4 py-2 rounded-lg mb-4">
+        <div className="text-center mb-6">
+          <div className="inline-block bg-[#00D948]/20 text-[#00D948] px-3 py-1 rounded-lg mb-3">
             <span className="text-xs font-bold uppercase tracking-widest">✓ Resultado Personalizado</span>
           </div>
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Produto Ideal Para Você</h3>
-          <p className="text-muted-foreground">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Produto Ideal Para Você</h3>
+          <p className="text-gray-300 text-sm">
             Com base em suas respostas, recomendamos:
           </p>
         </div>
 
         {/* Product Card */}
-        <div className="bg-background rounded-lg p-6 md:p-8 border border-border mb-6">
-          <div className="flex items-start justify-between mb-4">
+        <div className="bg-gray-900 rounded-lg p-4 md:p-6 border border-gray-700 mb-4">
+          <div className="flex items-start justify-between mb-3">
             <div>
-              <h4 className="text-2xl font-bold text-accent mb-1">{recommendation.name}</h4>
-              <p className="text-sm text-muted-foreground">{recommendation.description}</p>
+              <h4 className="text-lg md:text-xl font-bold text-[#00D948] mb-1">{recommendation.name}</h4>
+              <p className="text-xs md:text-sm text-gray-300">{recommendation.description}</p>
             </div>
-            <CheckCircle2 size={32} className="text-accent flex-shrink-0" />
+            <CheckCircle2 size={28} className="text-[#00D948] flex-shrink-0" />
           </div>
 
-          <p className="text-sm text-muted-foreground mb-6 p-4 bg-accent/5 rounded-lg border border-accent/20 italic">
+          <p className="text-xs md:text-sm text-gray-300 mb-4 p-3 bg-[#00D948]/5 rounded-lg border border-[#00D948]/20 italic">
             "{recommendation.reason}"
           </p>
 
-          <p className="text-xl font-bold text-foreground mb-6">{recommendation.price}</p>
+          <p className="text-base md:text-lg font-bold text-white mb-4">{recommendation.price}</p>
 
           <a
             href={recommendation.paymentLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block w-full bg-primary text-primary-foreground px-8 py-4 rounded-lg font-bold hover:opacity-90 transition-all text-center mb-4"
+            className="inline-block w-full bg-[#00D948] text-black px-6 py-3 rounded-lg font-bold hover:bg-[#00d948]/90 transition-all text-center mb-3 text-sm md:text-base"
           >
             COMPRAR AGORA COM DESCONTO
           </a>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <button
               onClick={resetQuiz}
-              className="flex items-center justify-center gap-2 bg-background border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
+              className="flex items-center justify-center gap-2 bg-gray-900 border-2 border-[#00D948] text-[#00D948] px-4 py-2 rounded-lg font-semibold hover:bg-[#00D948] hover:text-black transition-all text-xs md:text-sm"
             >
-              <RotateCcw size={18} />
+              <RotateCcw size={16} />
               Fazer Quiz Novamente
             </button>
             <a
               href="#produtos"
-              className="flex items-center justify-center gap-2 bg-accent/10 border-2 border-accent text-accent px-8 py-3 rounded-lg font-semibold hover:bg-accent hover:text-background transition-all"
+              className="flex items-center justify-center gap-2 bg-[#00D948]/10 border-2 border-[#00D948] text-[#00D948] px-4 py-2 rounded-lg font-semibold hover:bg-[#00D948] hover:text-black transition-all text-xs md:text-sm"
             >
               Ver Outras Recomendações
             </a>
@@ -211,22 +211,22 @@ export default function Quiz({ onClose }: QuizProps) {
         </div>
 
         {/* Trust Badges */}
-        <div className="bg-accent/5 rounded-lg p-6 border border-accent/20 space-y-3">
-          <div className="flex items-center gap-3">
-            <CheckCircle2 size={20} className="text-accent flex-shrink-0" />
-            <span className="text-sm text-foreground">
+        <div className="bg-[#00D948]/5 rounded-lg p-4 border border-[#00D948]/20 space-y-2">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 size={18} className="text-[#00D948] flex-shrink-0" />
+            <span className="text-xs md:text-sm text-gray-200">
               <strong>Garantia de 90 dias</strong> - Ou seu dinheiro de volta
             </span>
           </div>
-          <div className="flex items-center gap-3">
-            <CheckCircle2 size={20} className="text-accent flex-shrink-0" />
-            <span className="text-sm text-foreground">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 size={18} className="text-[#00D948] flex-shrink-0" />
+            <span className="text-xs md:text-sm text-gray-200">
               <strong>+50.000 clientes satisfeitos</strong> - Resultado comprovado
             </span>
           </div>
-          <div className="flex items-center gap-3">
-            <CheckCircle2 size={20} className="text-accent flex-shrink-0" />
-            <span className="text-sm text-foreground">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 size={18} className="text-[#00D948] flex-shrink-0" />
+            <span className="text-xs md:text-sm text-gray-200">
               <strong>Fórmula clinicamente testada</strong> - Sem promessas falsas
             </span>
           </div>
@@ -239,47 +239,47 @@ export default function Quiz({ onClose }: QuizProps) {
   const question = QUIZ_QUESTIONS[currentQuestion];
 
   return (
-    <div className="w-full bg-card rounded-lg p-8 md:p-12 border border-border">
+    <div className="w-full bg-black rounded-lg p-6 md:p-8 border border-border">
       {/* Progress Section */}
-      <div className="mb-10">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-sm font-bold text-foreground">
+      <div className="mb-6">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-xs md:text-sm font-bold text-gray-300">
             Pergunta {currentQuestion + 1} de {QUIZ_QUESTIONS.length}
           </span>
-          <span className="text-sm font-bold text-accent">{Math.round(progress)}%</span>
+          <span className="text-xs md:text-sm font-bold text-[#00D948]">{Math.round(progress)}%</span>
         </div>
-        <div className="w-full bg-border rounded-full h-2.5 overflow-hidden">
+        <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
           <div
-            className="bg-accent h-full rounded-full transition-all duration-500 ease-out"
+            className="bg-[#00D948] h-full rounded-full transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
       </div>
 
       {/* Question */}
-      <div className="mb-10">
-        <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8 leading-tight">
+      <div className="mb-6">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-tight">
           {question.question}
         </h3>
 
         {/* Options */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           {question.options.map((option, idx) => (
             <button
               key={option.value}
               onClick={() => handleAnswer(option.value)}
-              className="w-full text-left p-5 rounded-lg border-2 border-border bg-background hover:border-accent hover:bg-accent/5 transition-all duration-200 group"
+              className="w-full text-left p-3 md:p-4 rounded-lg border-2 border-gray-700 bg-gray-900 hover:border-[#00D948] hover:bg-[#00D948]/5 transition-all duration-200 group"
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-5 h-5 rounded-full border-2 border-border group-hover:border-accent transition-colors flex items-center justify-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 rounded-full border-2 border-gray-700 group-hover:border-[#00D948] transition-colors flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-[#00D948] opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <span className="font-semibold text-foreground group-hover:text-accent transition-colors">
+                  <span className="font-semibold text-gray-200 group-hover:text-[#00D948] transition-colors text-sm md:text-base">
                     {option.text}
                   </span>
                 </div>
-                <ChevronRight size={20} className="text-muted-foreground group-hover:text-accent transition-colors flex-shrink-0" />
+                <ChevronRight size={18} className="text-gray-500 group-hover:text-[#00D948] transition-colors flex-shrink-0" />
               </div>
             </button>
           ))}
@@ -287,8 +287,8 @@ export default function Quiz({ onClose }: QuizProps) {
       </div>
 
       {/* Info */}
-      <p className="text-center text-sm text-muted-foreground">
-        ⏱️ Leva menos de 1 minuto para completar
+      <p className="text-center text-xs md:text-sm text-gray-400 mt-4">
+        ⛱️ Leva menos de 1 minuto para completar
       </p>
     </div>
   );
